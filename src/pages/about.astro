@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro"
+const arr = ["Python", "Rust", "Typescript"]
+---
+
+<Layout title="title">
+  <h1 class="text-3xl font-bold underline">Hola Mundo</h1>
+  <p>{new Date().toLocaleDateString()}</p>
+  <ul>
+    {arr.map((word) => (
+<li>{word}</li>
+))}
+  </ul>
+</Layout>

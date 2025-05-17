@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const arr = ["Python", "Rust", "Typescript"];
+let arry = arr.sort()
 ---
 
 <Layout title="title">
@@ -8,5 +9,6 @@ const arr = ["Python", "Rust", "Typescript"];
   <p>{new Date().toLocaleDateString()}</p>
   <ul>
     {arr.map((word) => <li>{word}</li>)}
+    {arry}
   </ul>
 </Layout>

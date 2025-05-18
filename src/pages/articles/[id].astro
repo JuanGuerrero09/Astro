@@ -1,7 +1,8 @@
 ---
-import type { GetStaticPaths } from "astro";
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+// import { IS_ENABLE } from 'astro:env/server'
 import Layout from '../../layouts/Layout.astro';
+
 
 export async function getStaticPaths() {
   
@@ -10,18 +11,47 @@ export async function getStaticPaths() {
   return articles.map((article) => ({
     params: { id: article.slug },
     props: {
-      title: article.data.title,
-      description: article.data.description,
-      // date: article.data.date,
-      tags: article.data.tags
+      article
     }
   }));
 };
 
-const {title, description, tags} = Astro.props;
+const {article } = Astro.props;
+
+const { Content } = await render(article)
+
+const { title, description, tags } = article.data;
+
+const content = article.body;
+const words = content.split(' ').length;
+const lectureTime = Math.ceil(words / 200);
+
+
 
 ---
+<Layout title={title}>
+  <div class="relative w-full">
+    <a href="/" class="absolute left-4 top-4 hover:underline opacity-80 text-lg">← Volver atrás</a>
+  </div>
 
-<Layout title="">
-  <h1>{title}</h1>
+  <main class="w-full max-w-3xl mx-auto flex flex-col items-center gap-6 pt-4">
+    <h1 transition:name={`title-${article.slug}`} class="text-center text-7xl font-extrabold m-2">{title}</h1>
+    <p>Tiempo de lectura: <span id="lecture-time">{lectureTime}</span> minutos</p>
+
+    <div class="prose prose-invert ">
+      <Content id={`content-${article.slug}`} />
+    </div>
+
+    <p class="text-center text-2xl font-medium pt-5">{description}</p>
+
+    <div class="flex gap-10 text-2xl font-medium">
+      {tags.map((tag) => (
+        <a href={`/tags/${tag}`}>{tag}</a>
+      ))}
+    </div>
+  </main>
 </Layout>
+
+
+<script>
+</script>

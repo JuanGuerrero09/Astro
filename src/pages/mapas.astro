@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+---
+
+<Layout title="Mapas">
+  <h1 class="text-3xl font-bold">Mapas!</h1>
+  <p>{new Date().toLocaleDateString()}</p>
+  <div id='map' style='width: 400px; height: 300px;'></div>
+</Layout>
+
+<script>
+import maplibregl from 'maplibre-gl';
+var map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://demotiles.maplibre.org/style.json', // stylesheet location
+  center: [-3.7038, 40.4168], // Madrid
+  zoom: 3
+});
+</script>

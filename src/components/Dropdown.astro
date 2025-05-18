@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+const articles = await getCollection('articles');
+---
+
+<div class="relative inline-block text-sm">
+  <!-- Contenedor que mantiene el hover -->
+  <div class="group">
+    <!-- Botón -->
+    <button class="bg-[#1c1f26] text-white px-4 py-2 rounded-md hover:bg-[#2b2f38] transition">
+      Menú ▾
+    </button>
+
+    <!-- Menú desplegable -->
+    <div
+      class="absolute left-0 mt-2 min-w-[12rem] rounded-md border border-[#333] bg-[#1c1f26]/90 backdrop-blur-sm shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+    >
+      {articles.map((article) => (
+        <a
+          href={`/articles/${article.slug}`}
+          class="block px-4 py-2 text-white text-sm hover:bg-[#2b2f38] transition-colors"
+        >
+          {article.data.title}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

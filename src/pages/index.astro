@@ -1,8 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import Tooltip from "../components/Tooltip.astro";
 
-const articles = await getCollection('articles')
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -10,12 +10,10 @@ const articles = await getCollection('articles')
 ---
 
 <Layout title="Welcome">
-  <nav class="flex gap-10 text-2xl font-medium">
-    {articles.map((article) => (
-      <a  href={`/articles/${article.slug}`}>{article.data.title}</a>
-    ))}
-  </nav>
   <main>
     <h1 class="text-center text-7xl font-extrabold pt-10">Hola<span class="block">Mundo!</span></h1>
+  <article>
+  El valor de <Tooltip text="La presión atmosférica normal es de 1013.25 hPa">presión</Tooltip> es fundamental en hidráulica.
+</article>
   </main>
 </Layout>

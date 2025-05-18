@@ -1,5 +1,5 @@
 ---
-title: Hidráulica de canales
+title: Hidráulica
 author: Juan Saldarriaga
 description: ""
 tags: ["hidrology", "water"]

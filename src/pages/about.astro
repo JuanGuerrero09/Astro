@@ -1,14 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-const arr = ["Python", "Rust", "Typescript"];
-let arry = arr.sort()
 ---
 
 <Layout title="title">
-  <h1 class="text-3xl font-bold underline">Hola Mundo</h1>
+  <h1 class="text-3xl font-bold">Hola Mundo</h1>
   <p>{new Date().toLocaleDateString()}</p>
-  <ul>
-    {arr.map((word) => <li>{word}</li>)}
-    {arry}
-  </ul>
 </Layout>

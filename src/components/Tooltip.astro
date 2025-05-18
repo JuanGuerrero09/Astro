@@ -1,0 +1,39 @@
+---
+// Tooltip.astro
+const { text, children } = Astro.props;
+---
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  max-width: 300px;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* above */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+
+<span class="tooltip">
+  <slot />
+  <span class="tooltip-text">{text}</span>
+</span>

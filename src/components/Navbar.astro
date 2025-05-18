@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content"
+import Dropdown from "./Dropdown.astro"
+
+const articles = await getCollection('articles')
+---
+
+<nav class="flex justify-center items-center gap-10 text-2xl font-medium">
+  <a transition:name={`title-main`} href={`/`}>Main</a>
+  <a transition:name={`title-about`} href={`/about`}>About</a>
+  <a transition:name={`title-mapas`} href={`/mapas`}>Mapas</a>
+  <Dropdown />
+</nav>
+
+<style>
+
+</style>
